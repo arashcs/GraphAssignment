@@ -1,0 +1,23 @@
+/********************************
+ * Author: Joshua Stephenson-Losey, Arash Ajam, Beau Anderson
+ * Date: 4/5/18
+ * Overview: half assed main to run my portion of code
+ *********************************/
+public class Main {
+    public static void main(String[] args){
+        CreateGraph g = new CreateGraph();
+
+        int[][] graph = g.getGraph();
+
+        FloydWorsh algo = new FloydWorsh();
+
+        System.out.println("Start:");
+        algo.print(graph);
+        System.out.println();
+
+        algo.run(graph);
+
+        System.out.println("Finish:");
+        algo.print(graph);
+    }
+}
