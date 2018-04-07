@@ -1,18 +1,26 @@
+/********************************
+ * Author: Joshua Stephenson-Losey, Arash Ajam, Beau Anderson
+ * Date: 4/5/18
+ * Overview: Floyd-Worshall algorithm
+ *********************************/
 public class Main {
     public static void main(String[] args) {
-        // create the graph given in above figure
-        int numOfNodes = 5;
-        Graph graph = new Graph(numOfNodes);
-        graph.addEdge(graph, 0, 1);
-        graph.addEdge(graph, 0, 4);
-        graph.addEdge(graph, 1, 2);
-        graph.addEdge(graph, 1, 3);
-        graph.addEdge(graph, 1, 4);
-        graph.addEdge(graph, 2, 3);
-        graph.addEdge(graph, 3, 4);
 
-        // print the adjacency list representation of
-        // the above graph
-        graph.printGraph(graph);
+        CreateGraph createGraph = new CreateGraph();
+        int[][] graph = createGraph.getGraph();
+
+        System.out.println("Representation of the original Graph:");
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph.length; j++) {
+                System.out.print(graph[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        /*PRIM'S ALGORITHM*/
+        Prim prim = new Prim();
+        prim.runPrim(graph);
+
     }
 }

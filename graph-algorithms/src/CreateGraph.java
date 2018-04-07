@@ -1,3 +1,8 @@
+/********************************
+ * Author: Joshua Stephenson-Losey, Arash Ajam, Beau Anderson
+ * Date: 4/5/18
+ * Overview: Floyd-Worshall algorithm
+ *********************************/
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -7,9 +12,10 @@ import java.nio.file.Path;
 import java.util.StringTokenizer;
 
 public class CreateGraph{
+    public char[] vertices;
     public int[][] getGraph(){
         //find the file
-        final Path IN_PATH = FileSystems.getDefault().getPath("input", "input.csv");
+        final Path IN_PATH = FileSystems.getDefault().getPath("input", "input");
 
         Charset charset = Charset.forName("US-ASCII");
 
@@ -23,6 +29,7 @@ public class CreateGraph{
 
             //break up the line by commas
             StringTokenizer token = new StringTokenizer(line, ",");
+
             //get size of graph
             int size = token.countTokens();
             //initialize graph
@@ -42,7 +49,7 @@ public class CreateGraph{
                     //if the token is infinity
                     if(t.equalsIgnoreCase("i")){
                         //set to infinity
-                        graph[row][col] = 2000000;
+                        graph[row][col] = 0;
                         int val = graph[row][col];
                     }
                     else{
