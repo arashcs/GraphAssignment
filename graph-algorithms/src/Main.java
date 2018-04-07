@@ -22,5 +22,23 @@ public class Main {
         Prim prim = new Prim();
         prim.runPrim(graph);
 
+        FloydWorsh algo = new FloydWorsh();
+
+        /*KRUSKAL'S ALGORITHM*/
+
+
+        /*FLOYD WORSH'S ALGORITHM*/
+        System.out.println("FLOYDWORSH ALGORITHM:");
+        System.out.println("Start:");
+        algo.print(graph);
+        System.out.println();
+
+        algo.run(graph);
+        System.out.println("Finish:");
+        algo.print(graph);
+
+
+
+
     }
 }

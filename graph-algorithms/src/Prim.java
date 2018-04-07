@@ -76,7 +76,7 @@ public class Prim {
             unMarked.remove(minIndex);
             marked.add(minIndex);
         }
-        System.out.println("MST MATRIX:");
+        System.out.println("PRIM'S MST MATRIX:");
         for (int i = 0; i < graph.length; i++) {
             for (int j = 0; j < graph.length; j++) {
                 System.out.print(MST[i][j] + " ");
