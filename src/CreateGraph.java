@@ -1,0 +1,68 @@
+/********************************
+ * Author: Joshua Stephenson-Losey, Arash Ajam, Beau Anderson
+ * Date: 4/5/18
+ * Overview: Floyd-Worshall algorithm
+ *********************************/
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.StringTokenizer;
+
+public class CreateGraph{
+    public char[] vertices;
+    public int[][] getGraph(){
+        //find the file
+        final Path IN_PATH = FileSystems.getDefault().getPath("input", "input");
+
+        Charset charset = Charset.forName("US-ASCII");
+
+        //create graph
+        int[][] graph = new int[0][0];
+
+        //open the file
+        try (BufferedReader read = Files.newBufferedReader(IN_PATH, charset)) {
+            //read the first line
+            String line = read.readLine();
+
+            //break up the line by commas
+            StringTokenizer token = new StringTokenizer(line, ",");
+
+            //get size of graph
+            int size = token.countTokens();
+            //initialize graph
+            graph = new int[size][size];
+
+            //for number of rows (known by size)
+            for (int row = 0; row < size; row++) {
+                //read nex line
+                line = read.readLine();
+
+                //break up the line by commas
+                token = new StringTokenizer(line, ",");
+
+                //for each column
+                for (int col = 0; col < size; col++) {
+                    String t = token.nextToken();
+                    //if the token is infinity
+                    if(t.equalsIgnoreCase("i")){
+                        //set to infinity
+                        graph[row][col] = 0;
+                        int val = graph[row][col];
+                    }
+                    else{
+                        //else set to the token as an int
+                        graph[row][col] = Integer.parseInt(t);
+                    }
+                }
+            }
+        }
+        //catch errors
+        catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
+        return graph;
+    }
+}
